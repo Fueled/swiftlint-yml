@@ -1,0 +1,52 @@
+disabled_rules: # rule identifiers to exclude from running
+  - force_cast
+  - line_length
+  - force_try
+  - trailing_whitespace
+  - operator_whitespace
+  - closing_brace
+opt_in_rules:
+  - empty_count
+included: # paths to include during linting. `--path` is ignored if present.
+  - .
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+  - Pods
+type_body_length:
+  - 300
+  - 400
+file_length:
+  warning: 1000
+  error: 2000
+type_name:
+  min_length: 3
+trailing_semicolon: error
+variable_name:
+  min_length:
+    warning: 3
+  max_length:
+    warning: 70
+    error: 100
+  severity: error
+  excluded:
+    - x
+    - y
+    - i
+    - j
+    - id
+    - URL
+statement_position: error
+return_arrow_whitespace: error
+opening_brace: error
+legacy_constructor: error
+legacy_constant: error
+leading_whitespace: error
+empty_count: warning
+reporter: "xcode"
+custom_rules:
+    copyright:
+        name: "Copyright should be Fueled"
+        regex: "(?i:copyright)\s+\(c\)\s+\d+\s+(?i:(?!fueled))"
+        match_kinds:
+          - comment
+        severity: warning
