@@ -1,6 +1,5 @@
 disabled_rules: # rule identifiers to exclude from running
   - force_cast
-  - line_length
   - force_try
   - trailing_whitespace
   - operator_whitespace
@@ -13,14 +12,20 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Carthage
   - Pods
 type_body_length:
-  - 300
-  - 400
+  warning: 300
+  error: 400
+line_length:
+  warning: 160
+  error: 200
 file_length:
   warning: 1000
-  error: 2000
+  error: 1500
 type_name:
   min_length: 3
 trailing_semicolon: error
+function_body_length:
+  warning: 150
+  error: 300
 variable_name:
   min_length:
     warning: 3
@@ -41,12 +46,50 @@ opening_brace: error
 legacy_constructor: error
 legacy_constant: error
 leading_whitespace: error
+conditional_binding_cascade: error
 empty_count: warning
+nesting: error
+valid_docs: error
 reporter: "xcode"
 custom_rules:
     copyright:
-        name: "Copyright should be Fueled"
+        name: "Fueled Copyright"
+        message: "Copyright should be Fueled"
         regex: "(?i:copyright)\s+\(c\)\s+\d+\s+(?i:(?!fueled))"
         match_kinds:
           - comment
+        severity: warning
+    legacy-for:
+        name: "Legacy For Loop"
+        message: "Legacy for loop should be avoided."
+        regex: "for[[:space:]]?\(?[[:space:]]+(?![^[[:space:]]]+[[:space:]]in)[^;]*;[^;]*;[^}]*\}"
+        match_kinds:
+          - keyword
+        severity: error
+    protocol-conformance:
+        name: "Protocol Conformance"
+        message: "Protocol conformance should be declared in a separate extension in the same file"
+        regex: "class[[:space:]]+(?i:(?![^d]*delegate:))[^:]+:[[:space:]][^,]+,[^{}]*\{"
+        match_kinds:
+          - keyword
+        severity: warning
+    computed-property:
+        name: "Computed Properties"
+        message: "The get clause should be omitted if the computed property is read only"
+        regex: "var[[:space:]]+[^:]+:[^{]*\{[[:space:]]*get[^}]+\}(?![[:space:]]*set)"
+        match_kinds:
+          - keyword
+        severity: warning
+    swift-generic-syntax:
+        name: "Swift Generic Syntax"
+        message: "Prefer using swift's syntactic sugars rather than using the generic syntax"
+        regex: "(Array|Dictionary|Optional)(<[^>]+>|\([^\)]*\))"
+        match_kinds:
+          - identifier
+          - typeidentifier
+        severity: error
+    language:
+        name: "Use US American English"
+        message: "Prefer using US English spelling"
+        regex: "(?i)colour|centre|fibre|litre|colour|flavour|humour|labour|neigbour|([bcdfghjklmnpqrstvwxz][yi]se[^a-zA-Z])|([bcdfghjklmnpqrstvwxz]ence[^a-zA-Z])"
         severity: warning
