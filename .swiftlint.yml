@@ -80,16 +80,3 @@ custom_rules:
         match_kinds:
           - keyword
         severity: warning
-    swift-generic-syntax:
-        name: "Swift Generic Syntax"
-        message: "Prefer using swift's syntactic sugars rather than using the generic syntax"
-        regex: "(Array|Dictionary|Optional)(<[^>]+>|\([^\)]*\))"
-        match_kinds:
-          - identifier
-          - typeidentifier
-        severity: error
-    language:
-        name: "Use US American English"
-        message: "Prefer using US English spelling"
-        regex: "(?i)colour|centre|fibre|litre|colour|flavour|humour|labour|neigbour|([bcdfghjklmnpqrstvwxz][yi]se[^a-zA-Z])|([bcdfghjklmnpqrstvwxz]ence[^a-zA-Z])"
-        severity: warning
