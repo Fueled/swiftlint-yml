@@ -76,7 +76,7 @@ custom_rules:
     computed-property:
         name: "Computed Properties"
         message: "The get clause should be omitted if the computed property is read only"
-        regex: "var[[:space:]]+[^:]+:[^{]*\{[[:space:]]*get[^}]+\}(?![[:space:]]*set)"
+        regex: "var[[:space:]]+[^:]+:[^{]*\{[[:space:]]*get[[:space:]]*\{[^}]+\}(?![[:space:]]*set)"
         match_kinds:
           - keyword
         severity: warning
