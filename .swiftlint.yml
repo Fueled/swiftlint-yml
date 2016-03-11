@@ -69,7 +69,7 @@ custom_rules:
     protocol-conformance:
         name: "Protocol Conformance"
         message: "Protocol conformance should be declared in separate extensions in the same file"
-        regex: "(class|struct|extension)[[:space:]]+(?i:(?![^d]*delegate:))[^'\"<>{},!?:]+:([^'\"<>{},!?:]+,)+[^'\"<>{},!?:]*\{"
+        regex: "(class|struct|extension)[[:space:]]+(?i:(?![^d]*delegate:))[^'\"()<>{},!?:]+:([^'\"<>(){},!?:]+,)+[^'\"<>(){},!?:]*\{"
         match_kinds:
           - keyword
         severity: warning
@@ -80,3 +80,11 @@ custom_rules:
         match_kinds:
           - keyword
         severity: warning
+    swift-generic-syntax:
+        name: "Swift Generic Syntax"
+        message: "Prefer using swift's syntactic sugars rather than using the generic syntax"
+        regex: "(Array|Dictionary|Optional)(<[^'\"<>(){},!?:]+>|\(((array|dictionary)Literal|(?i:(?!.*\.\.(\.|<))[^a-z'\"<>(){},!?:]*\))))"
+        match_kinds:
+          - identifier
+          - typeidentifier
+        severity: error
