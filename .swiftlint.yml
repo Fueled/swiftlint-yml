@@ -68,8 +68,8 @@ custom_rules:
         severity: error
     protocol-conformance:
         name: "Protocol Conformance"
-        message: "Protocol conformance should be declared in a separate extension in the same file"
-        regex: "class[[:space:]]+(?i:(?![^d]*delegate:))[^:]+:[[:space:]][^\n,]+,[^\n{}]*\{"
+        message: "Protocol conformance should be declared in separate extensions in the same file"
+        regex: "(class|struct|extension)[[:space:]]+(?i:(?![^d]*delegate:))[^'\"<>{},!?:]+:([^'\"<>{},!?:]+,)+[^'\"<>{},!?:]*\{"
         match_kinds:
           - keyword
         severity: warning
