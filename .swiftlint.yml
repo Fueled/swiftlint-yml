@@ -22,7 +22,6 @@ file_length:
   error: 1500
 type_name:
   min_length: 3
-trailing_semicolon: error
 function_body_length:
   warning: 150
   error: 300
@@ -51,6 +50,7 @@ legacy_constructor: error
 legacy_constant: error
 leading_whitespace: error
 conditional_binding_cascade: error
+trailing_semicolon: error
 colon: error
 empty_count: warning
 nesting: error
@@ -67,7 +67,7 @@ custom_rules:
     legacy-for:
         name: "Legacy For Loop"
         message: "Legacy for loop should be avoided."
-        regex: "for[[:space:]]?\(?[[:space:]]+(?![^[[:space:]]]+[[:space:]]in)[^;]*;[^;]*;[^}]*\}"
+        regex: "for[[:space:]]?\(?[[:space:]]+(?![^\"[[:space:]]]+[[:space:]]in)[^\";]*;[^\";]*;[^\"}]*\}"
         match_kinds:
           - keyword
         severity: error
