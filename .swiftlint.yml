@@ -40,6 +40,10 @@ variable_name:
     - j
     - id
     - URL
+    - r
+    - g
+    - b
+    - a
 statement_position: error
 return_arrow_whitespace: error
 opening_brace: error
@@ -47,6 +51,7 @@ legacy_constructor: error
 legacy_constant: error
 leading_whitespace: error
 conditional_binding_cascade: error
+colon: error
 empty_count: warning
 nesting: error
 valid_docs: error
