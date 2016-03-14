@@ -22,6 +22,7 @@ file_length:
   error: 1500
 type_name:
   min_length: 3
+trailing_semicolon: error
 function_body_length:
   warning: 150
   error: 300
@@ -50,7 +51,6 @@ legacy_constructor: error
 legacy_constant: error
 leading_whitespace: error
 conditional_binding_cascade: error
-trailing_semicolon: error
 colon: error
 empty_count: warning
 nesting: error
@@ -67,7 +67,7 @@ custom_rules:
     legacy-for:
         name: "Legacy For Loop"
         message: "Legacy for loop should be avoided."
-        regex: "for[[:space:]]?\(?[[:space:]]+(?![^\"[[:space:]]]+[[:space:]]in)[^\";]*;[^\";]*;[^\"}]*\}"
+        regex: "for[[:space:]]?\(?[[:space:]]+(?![^[[:space:]]]+[[:space:]]in)[^;]*;[^;]*;[^}]*\}"
         match_kinds:
           - keyword
         severity: error
@@ -92,4 +92,14 @@ custom_rules:
         match_kinds:
           - identifier
           - typeidentifier
+        severity: error
+    indentation-character:
+        name: "Indentation"
+        message: "Tabs should be used rather than spaces. This error may not be displayed exactly at the location of the violation but just above it."
+        regex: "([^\n]*\n+|[^\t]*\t+) {2,}"
+        severity: error
+    consecutive-new-lines:
+        name: "New Lines"
+        message: "There shouldn't be more than one consecutive empty line. This error may not be displayed exactly at the location of the violation but just above it."
+        regex: "([^\n]*\n){1,4}?(?:\n[[:blank:]]*)+\n"
         severity: error
