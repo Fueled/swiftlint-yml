@@ -107,7 +107,7 @@ custom_rules:
     opening_brace:
         name: "Opening brace"
         message: "Opening braces should be preceded by a single space and on the same line as the declaration, or optionally on a new line if the statement is multiline."
-        regex: "(?<=\s)(?<!#)(?:(?:(?#Keywords that can be followed by a multiline contruct)switch|func|if|guard|while)\s+(?:(?#Multiline construct)(?:[^\n]*\}[[:blank:]]*\)*)(?:[^{\n]+else)?(?=\s*\{)[[:blank:]]*+(?:\n\s*| {2,})\{|(?#Single construct)(?:.*\}[[:blank:]]*\)*)(?:[^{]+else)?(?=\s*\{)(?:\n| ){2,}\{|[^{\n]*(?:[^\n{]+else)?(?=\s*\{)(?:\n\s*| {2,})\{)|(?:(?#Keywords that should always be strictly single line)deinit|case|do|for|enum|catch|init|subscript|get|set|willSet|didSet|repeat|struct|class|extension|catch|protocol)[^\n{]*(?<![[:blank:]])(?:\n\s*| {2,})?\{)"
+        regex: "(?<=\s)(?<!#)(?:(?:(?#Edge case keywords)let|var)[^=]+=(?:|[[:blank:]]{2,}|\s+\n\s*)\{|(?:(?#Keywords that can be followed by a multiline contruct)switch|func|if|guard|while)\s+(?:(?#Multiline construct)(?:[^\n]*\}[[:blank:]]*\)*)(?:[^{\n]+else)?(?=\s*\{)[[:blank:]]*+(?:\n\s*| {2,})\{|(?#Single construct)(?:.*\}[[:blank:]]*\)*)(?:[^{]+else)?(?=\s*\{)(?:\n| ){2,}\{|[^{\n]*(?:[^\n{]+else)?(?=\s*\{)(?:\n\s*| {2,})\{)|(?:(?#Keywords that should always be strictly single line)deinit|case|do|for|enum|catch|init|subscript|get|set|willSet|didSet|repeat|struct|class|extension|catch|protocol)[^\n{]*(?<![[:blank:]])(?:\n\s*| {2,})?\{)"
         match_kinds:
           - keyword
         severity: error
