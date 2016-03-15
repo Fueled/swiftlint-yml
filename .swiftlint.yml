@@ -64,28 +64,28 @@ custom_rules:
         match_kinds:
           - comment
         severity: warning
-    legacy-for:
+    legacy_for:
         name: "Legacy For Loop"
         message: "Legacy for loop should be avoided."
         regex: "for[[:space:]]?\(?[[:space:]]+(?![^[[:space:]]]+[[:space:]]in)[^;]*;[^;]*;[^}]*\}"
         match_kinds:
           - keyword
         severity: error
-    protocol-conformance:
+    protocol_conformance:
         name: "Protocol Conformance"
         message: "Protocol conformance should be declared in separate extensions in the same file"
         regex: "(class|struct|extension)[[:space:]]+(?i:(?![^d]*delegate:))[^'\"()<>{},!?:]+:([^'\"<>(){},!?:]+,)+[^'\"<>(){},!?:]*\{"
         match_kinds:
           - keyword
         severity: warning
-    computed-property:
+    computed_property:
         name: "Computed Properties"
         message: "The get clause should be omitted if the computed property is read only"
         regex: "var[[:space:]]+[^:]+:[^{]*\{[[:space:]]*get[[:space:]]*\{[^}]+\}(?![[:space:]]*set)"
         match_kinds:
           - keyword
         severity: warning
-    swift-generic-syntax:
+    swift_generic_syntax:
         name: "Swift Generic Syntax"
         message: "Prefer using swift's syntactic sugars rather than using the generic syntax"
         regex: "(Array|Dictionary|Optional)(<[^'\"<>(){},!?:]+>|\(((array|dictionary)Literal|(?i:(?!.*\.\.(\.|<))[^a-z'\"<>(){},!?:]*\))))"
@@ -93,12 +93,12 @@ custom_rules:
           - identifier
           - typeidentifier
         severity: error
-    indentation-character:
+    indentation_character:
         name: "Indentation"
         message: "Tabs should be used rather than spaces. This error may not be displayed exactly at the location of the violation but just above it."
         regex: "([^\n]*\n+|[^\t]*\t+) {2,}"
         severity: error
-    consecutive-new-lines:
+    consecutive_new_lines:
         name: "New Lines"
         message: "There shouldn't be more than one consecutive empty line. This error may not be displayed exactly at the location of the violation but just above it."
         regex: "([^\n]*\n){1,4}?(?:\n[[:blank:]]*)+\n"
