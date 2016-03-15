@@ -4,6 +4,7 @@ disabled_rules: # rule identifiers to exclude from running
   - trailing_whitespace
   - operator_whitespace
   - closing_brace
+  - opening_brace
 opt_in_rules:
   - empty_count
 included: # paths to include during linting. `--path` is ignored if present.
@@ -103,3 +104,11 @@ custom_rules:
         message: "There shouldn't be more than one consecutive empty line. This error may not be displayed exactly at the location of the violation but just above it."
         regex: "([^\n]*\n){1,4}?(?:\n[[:blank:]]*)+\n"
         severity: error
+    opening_brace:
+        name: "Opening brace"
+        message: "Opening braces should be preceded by a single space and on the same line as the declaration, or optionally on a new line if the statement is multiline."
+        regex: "(?<=\s)(?<!#)(?:(?:(?#Keywords that can be followed by a multiline contruct)switch|func|if|guard|while)\s+(?:[^{=\n]*[[:blank:]]*\n+[[:blank:]]*\{|[^{]+(?<![[:blank:]])(?: {2,})?\{)|(?:(?#Keywords that should always be strictly single line)deinit|case|do|else|for|enum|let|var|catch|init|subscript|get|set|willSet|didSet|repeat|struct|class|extension|catch|protocol)[^{]*(?<![[:blank:]])(?: {2,})?\{)"
+        match_kinds:
+          - keyword
+        severity: error
+    
