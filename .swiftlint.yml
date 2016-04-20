@@ -89,7 +89,7 @@ custom_rules:
     swift_generic_syntax:
         name: "Swift Generic Syntax"
         message: "Prefer using swift's syntactic sugars rather than using the generic syntax"
-        regex: "(Array|Dictionary|Optional)(<[^'\"<>(){},!?:]+>|\(((array|dictionary)Literal|(?i:(?!.*\.\.(\.|<))[^a-z'\"<>(){},!?:]*\))))"
+        regex: "(Array|Dictionary|Optional)(<[^'\"<>(){},!?:]+>|\(((array|dictionary)Literal|(?i:(?!.*\.\.(\.|<))[^$a-z'\"<>(){},!?:]*\))))"
         match_kinds:
           - identifier
           - typeidentifier
