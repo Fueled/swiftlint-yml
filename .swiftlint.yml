@@ -3,7 +3,7 @@ disabled_rules: # rule identifiers to exclude from running
   - force_try
   - trailing_whitespace
   - operator_whitespace
-  - closing_brace
+  - conditional_binding_cascade
   - opening_brace
 opt_in_rules:
   - empty_count
