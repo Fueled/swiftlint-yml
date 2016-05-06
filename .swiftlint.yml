@@ -65,13 +65,6 @@ custom_rules:
         match_kinds:
           - comment
         severity: warning
-    legacy_for:
-        name: "Legacy For Loop"
-        message: "Legacy for loop should be avoided."
-        regex: "for[[:space:]]?\(?[[:space:]]+(?![^[[:space:]]]+[[:space:]]in)[^;]*;[^;]*;[^}]*\}"
-        match_kinds:
-          - keyword
-        severity: error
     protocol_conformance:
         name: "Protocol Conformance"
         message: "Protocol conformance should be declared in separate extensions in the same file"
