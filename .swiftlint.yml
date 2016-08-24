@@ -107,4 +107,8 @@ custom_rules:
         match_kinds:
           - keyword
         severity: error
-    
+    nested_self_usage:
+        name: "Nested .self usage"
+        message: ".self shouldn't be used more than once on a given statement"
+        regex: "(?<!\")self\.(?:\p{L}+\.)*self"
+        severity: warning
