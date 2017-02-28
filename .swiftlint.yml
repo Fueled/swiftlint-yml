@@ -18,6 +18,11 @@ opt_in_rules:
   - empty_count
   - overridden_super_call
   - prohibited_super_call
+  - conditional_returns_on_newline
+  - closure_spacing
+  - switch_case_on_newline
+  - private_outlet
+  - explicit_init
 included: # paths to include during linting. `--path` is ignored if present.
   - .
 excluded: # paths to ignore during linting. Takes precedence over `included`.
@@ -44,6 +49,9 @@ statement_position:
   severity: error
 colon:
   severity: error
+private_outlet:
+  severity: warning
+  allow_private_set: true
 variable_name:
   min_length:
     warning: 3
