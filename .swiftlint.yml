@@ -1,13 +1,28 @@
 disabled_rules: # rule identifiers to exclude from running
   - force_cast
   - force_try
-  - trailing_whitespace
   - operator_whitespace
-  - conditional_binding_cascade
   - opening_brace
   - nesting
+  - object_literal
+  - large_tuple
+  - unused_closure_parameter
+  - closure_end_indentation
+  - valid_docs
+  - cyclomatic_complexity
+  - trailing_comma
+  - function_parameter_count
+  - compiler_protocol_init # new rule to discuss for future
+  - generic_type_name # new rule to discuss for future
 opt_in_rules:
   - empty_count
+  - overridden_super_call
+  - prohibited_super_call
+  - conditional_returns_on_newline
+  - closure_spacing
+  - switch_case_on_newline
+  - private_outlet
+  - explicit_init
 included: # paths to include during linting. `--path` is ignored if present.
   - .
 excluded: # paths to ignore during linting. Takes precedence over `included`.
@@ -18,16 +33,25 @@ type_body_length:
   error: 400
 line_length:
   warning: 220
-  error: 9999
 file_length:
   warning: 1000
-  error: 1500
 type_name:
   min_length: 2
 trailing_semicolon: error
+trailing_comma:
+  mandatory_comma: true
+  severity: warning
 function_body_length:
   warning: 150
   error: 300
+statement_position:
+  statement_mode: default
+  severity: error
+colon:
+  severity: error
+private_outlet:
+  severity: warning
+  allow_private_set: true
 variable_name:
   min_length:
     warning: 3
@@ -49,26 +73,15 @@ variable_name:
     - g
     - b
     - a
-statement_position: error
 return_arrow_whitespace: error
 opening_brace: error
 legacy_constructor: error
 legacy_constant: error
 leading_whitespace: error
-conditional_binding_cascade: error
-colon: error
 empty_count: warning
-nesting: error
-valid_docs: error
+shorthand_operator: warning
 reporter: "xcode"
 custom_rules:
-    copyright:
-        name: "Fueled Copyright"
-        message: "Copyright should be Fueled"
-        regex: "(?i:copyright)\s+\(c\)\s+\d+\s+(?i:(?!fueled))"
-        match_kinds:
-          - comment
-        severity: warning
     protocol_conformance:
         name: "Protocol Conformance"
         message: "Protocol conformance should be declared in separate extensions in the same file"
@@ -94,7 +107,7 @@ custom_rules:
     indentation_character:
         name: "Indentation"
         message: "Tabs should be used rather than spaces. This error may not be displayed exactly at the location of the violation but just above it."
-        regex: "([^\n]*\n+|[^\t]*\t+) {2,}"
+        regex: "[^\n]*\n+ +"
         severity: error
     consecutive_new_lines:
         name: "New Lines"
