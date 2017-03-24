@@ -33,6 +33,7 @@ type_body_length:
   error: 400
 line_length:
   warning: 220
+  error: 99999 # Default is 200, so swiftlint would output an error if the file length is between 200 and 220
 file_length:
   warning: 1000
 type_name:
