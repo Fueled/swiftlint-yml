@@ -86,21 +86,21 @@ custom_rules:
     protocol_conformance:
         name: "Protocol Conformance"
         message: "Protocol conformance should be declared in separate extensions in the same file"
-        regex: "(class|struct|extension)[[:space:]]+(?i:(?![^d]*delegate:))[^'\"()<>{},!?:]+:([^'\"<>(){},!?:]+,)+[^'\"<>(){},!?:]*\{"
+        regex: "(class|struct|extension)[[:space:]]+(?i:(?![^d]*delegate:))[^'\"()<>{},!?:]+:([^'\"<>(){},!?:]+,)+[^'\"<>(){},!?:]*\\{"
         match_kinds:
           - keyword
         severity: warning
     computed_property:
         name: "Computed Properties"
         message: "The get clause should be omitted if the computed property is read only"
-        regex: "var[[:space:]]+[^:]+:[^{]*\{[[:space:]]*get[[:space:]]*\{[^}]+\}(?![[:space:]]*set)"
+        regex: "var[[:space:]]+[^:]+:[^{]*\\{[[:space:]]*get[[:space:]]*\\{[^}]+\\}(?![[:space:]]*set)"
         match_kinds:
           - keyword
         severity: warning
     swift_generic_syntax:
         name: "Swift Generic Syntax"
         message: "Prefer using swift's syntactic sugars rather than using the generic syntax"
-        regex: "(Array|Dictionary|Optional)(<[^'\"<>(){},!?:]+>|\(((array|dictionary)Literal|(?i:(?!.*\.\.(\.|<))[^$a-z'\"<>(){},!?:]*\))))"
+        regex: "(Array|Dictionary|Optional)(<[^'\"<>(){},!?:]+>|\\(((array|dictionary)Literal|(?i:(?!.*\\.\\.(\\.|<))[^$a-z'\"<>(){},!?:]*\\))))"
         match_kinds:
           - identifier
           - typeidentifier
@@ -118,12 +118,12 @@ custom_rules:
     opening_brace:
         name: "Opening brace"
         message: "Opening braces should be preceded by a single space and on the same line as the declaration, or optionally on a new line if the statement is multiline."
-        regex: "(?<=\s)(?<!#)(?:(?:(?#Edge case keywords)let|var)[^=]+=(?:|[[:blank:]]{2,}|\s+\n\s*)\{|(?:(?#Keywords that can be followed by a multiline contruct)switch|func|if|guard|while)\s+(?:(?#Multiline construct)(?:[^\n]*\}[[:blank:]]*\)*)(?:[^{\n]+else)?(?=\s*\{)[[:blank:]]*+(?:\n\s*| {2,})\{|(?#Single construct)(?:.*\}[[:blank:]]*\)*)(?:[^{]+else)?(?=\s*\{)(?:\n| ){2,}\{|[^{\n]*(?:[^\n{]+else)?(?=\s*\{)(?:\n\s*| {2,})\{)|(?:(?#Keywords that should always be strictly single line)deinit|case|do|for|enum|catch|init|subscript|get|set|willSet|didSet|repeat|struct|class|extension|catch|protocol)[^\n{]*(?<![[:blank:]])(?:\n\s*| {2,})?\{)"
+        regex: "(?<=\\s)(?<!#)(?:(?:(?#Edge case keywords)let|var)[^=]+=(?:|[[:blank:]]{2,}|\\s+\n\\s*)\\{|(?:(?#Keywords that can be followed by a multiline contruct)switch|func|if|guard|while)\\s+(?:(?#Multiline construct)(?:[^\n]*\\}[[:blank:]]*\\)*)(?:[^{\n]+else)?(?=\\s*\\{)[[:blank:]]*+(?:\n\\s*| {2,})\\{|(?#Single construct)(?:.*\\}[[:blank:]]*\\)*)(?:[^{]+else)?(?=\\s*\\{)(?:\n| ){2,}\\{|[^{\n]*(?:[^\n{]+else)?(?=\\s*\\{)(?:\n\\s*| {2,})\\{)|(?:(?#Keywords that should always be strictly single line)deinit|case|do|for|enum|catch|init|subscript|get|set|willSet|didSet|repeat|struct|class|extension|catch|protocol)[^\n{]*(?<![[:blank:]])(?:\n\\s*| {2,})?\\{)"
         match_kinds:
           - keyword
         severity: error
     nested_self_usage:
         name: "Nested .self usage"
         message: ".self shouldn't be used more than once on a given statement"
-        regex: "(?<!\")self\.(?:\p{L}+\.)*self"
+        regex: "(?<!\")self\\.(?:\\p{L}+\\.)*self"
         severity: warning
