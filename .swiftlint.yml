@@ -38,6 +38,7 @@ file_length:
   warning: 1000
 type_name:
   min_length: 2
+  max_length: 60
 trailing_semicolon: error
 trailing_comma:
   mandatory_comma: true
