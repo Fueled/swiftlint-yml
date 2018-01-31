@@ -1,28 +1,70 @@
-disabled_rules: # rule identifiers to exclude from running
-  - force_cast
-  - force_try
-  - operator_whitespace
-  - opening_brace
-  - nesting
-  - object_literal
-  - large_tuple
-  - unused_closure_parameter
-  - closure_end_indentation
-  - valid_docs
-  - cyclomatic_complexity
-  - trailing_comma
-  - function_parameter_count
-  - compiler_protocol_init # new rule to discuss for future
-  - generic_type_name # new rule to discuss for future
-opt_in_rules:
-  - empty_count
-  - overridden_super_call
-  - prohibited_super_call
-  - conditional_returns_on_newline
+whitelist_rules:
+  - block_based_kvo
+  - class_delegate_protocol
+  - closing_brace
+  - closure_parameter_position
   - closure_spacing
-  - switch_case_on_newline
-  - private_outlet
+  - colon
+  - comma
+  - conditional_returns_on_newline
+  - control_statement
+  - custom_rules
+  - discarded_notification_center_observer
+  - discouraged_direct_init
+  - dynamic_inline
+  - empty_count
+  - empty_enum_arguments
+  - empty_parameters
+  - empty_parentheses_with_trailing_closure
   - explicit_init
+  - fallthrough
+  - file_length
+  - for_where
+  - function_body_length
+  - identifier_name
+  - implicit_getter
+  - is_disjoint
+  - leading_whitespace
+  - legacy_cggeometry_functions
+  - legacy_constant
+  - legacy_constructor
+  - legacy_nsgeometry_functions
+  - line_length
+  - mark
+  - multiple_closures_with_trailing_closure
+  - notification_center_detachment
+  - overridden_super_call
+  - private_outlet
+  - private_over_fileprivate
+  - private_unit_test
+  - prohibited_super_call
+  - protocol_property_accessors_order
+  - redundant_discardable_let
+  - redundant_optional_initialization
+  - redundant_string_enum_value
+  - redundant_void_return
+  - return_arrow_whitespace
+  - shorthand_operator
+  - statement_position
+  - superfluous_disable_command
+  - switch_case_alignment
+  - switch_case_on_newline
+  - syntactic_sugar
+  - todo
+  - trailing_newline
+  - trailing_semicolon
+  - trailing_whitespace
+  - type_body_length
+  - type_name
+  - unneeded_break_in_switch
+  - unused_enumerated
+  - unused_optional_binding
+  - valid_ibinspectable
+  - vertical_parameter_alignment
+  - vertical_whitespace
+  - void_return
+  - weak_delegate
+  - xctfail_message
 included: # paths to include during linting. `--path` is ignored if present.
   - .
 excluded: # paths to ignore during linting. Takes precedence over `included`.
@@ -54,7 +96,7 @@ colon:
 private_outlet:
   severity: warning
   allow_private_set: true
-variable_name:
+identifier_name:
   min_length:
     warning: 3
   max_length:
@@ -98,23 +140,10 @@ custom_rules:
         match_kinds:
           - keyword
         severity: warning
-    swift_generic_syntax:
-        name: "Swift Generic Syntax"
-        message: "Prefer using swift's syntactic sugars rather than using the generic syntax"
-        regex: "(Array|Dictionary|Optional)(<[^'\"<>(){},!?:]+>|\\(((array|dictionary)Literal|(?i:(?!.*\\.\\.(\\.|<))[^$a-z'\"<>(){},!?:]*\\))))"
-        match_kinds:
-          - identifier
-          - typeidentifier
-        severity: error
     indentation_character:
         name: "Indentation"
         message: "Tabs should be used rather than spaces. This error may not be displayed exactly at the location of the violation but just above it."
         regex: "[^\n]*\n+ +"
-        severity: error
-    consecutive_new_lines:
-        name: "New Lines"
-        message: "There shouldn't be more than one consecutive empty line. This error may not be displayed exactly at the location of the violation but just above it."
-        regex: "([^\n]*\n){1,4}?(?:\n[[:blank:]]*)+\n"
         severity: error
     opening_brace:
         name: "Opening brace"
