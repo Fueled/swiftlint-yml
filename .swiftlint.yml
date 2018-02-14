@@ -1,11 +1,15 @@
 whitelist_rules:
+  - array_init
   - block_based_kvo
   - class_delegate_protocol
+  - contains_over_first_not_nil
   - closing_brace
+  - closure_end_indentation
   - closure_parameter_position
   - closure_spacing
   - colon
   - comma
+  - compiler_protocol_init
   - conditional_returns_on_newline
   - control_statement
   - custom_rules
@@ -18,22 +22,36 @@ whitelist_rules:
   - empty_parentheses_with_trailing_closure
   - explicit_init
   - fallthrough
+  - fatal_error_message
+  - file_header
   - file_length
+  - first_where
   - for_where
   - function_body_length
+  - generic_type_name
   - identifier_name
   - implicit_getter
   - is_disjoint
+  - joined_default_parameter
   - leading_whitespace
   - legacy_cggeometry_functions
   - legacy_constant
   - legacy_constructor
   - legacy_nsgeometry_functions
   - line_length
+  - literal_expression_end_indentation
   - mark
+  - multiline_arguments
+  - multiline_parameters
   - multiple_closures_with_trailing_closure
+  - nimble_operator
+  - no_extension_access_modifier
   - notification_center_detachment
+  - object_literal
+  - operator_usage_whitespace
   - overridden_super_call
+  - override_in_extension
+  - private_action
   - private_outlet
   - private_over_fileprivate
   - private_unit_test
@@ -46,30 +64,52 @@ whitelist_rules:
   - return_arrow_whitespace
   - shorthand_operator
   - statement_position
+  - sorted_first_last
+  - sorted_imports
   - superfluous_disable_command
   - switch_case_alignment
   - switch_case_on_newline
   - syntactic_sugar
   - todo
+  - trailing_comma
   - trailing_newline
   - trailing_semicolon
   - trailing_whitespace
   - type_body_length
   - type_name
   - unneeded_break_in_switch
+  - unneeded_parentheses_in_closure_argument
   - unused_enumerated
   - unused_optional_binding
+  - unused_closure_parameter
   - valid_ibinspectable
   - vertical_parameter_alignment
+  - vertical_parameter_alignment_on_call
   - vertical_whitespace
   - void_return
   - weak_delegate
   - xctfail_message
-included: # paths to include during linting. `--path` is ignored if present.
+  - yoda_condition
+included:
   - .
-excluded: # paths to ignore during linting. Takes precedence over `included`.
+excluded:
   - Carthage
   - Pods
+file_header:
+  required_pattern: |
+                    \/\/
+                    \/\/  .*?\.(?:swift|h|m)
+                    \/\/  .+
+                    \/\/
+                    \/\/  Created by .*? on \d{1,2}\/\d{1,2}\/\d{2,4}\.?
+                    \/\/  Copyright (?:©|\(c\)) \d{4} Fueled\. All rights reserved\.
+                    \/\/
+vertical_whitespace:
+  severity: error
+syntactic_sugar: error
+fatal_error_message: error
+override_in_extension: error
+no_extension_access_modifier: warning
 type_body_length:
   warning: 300
   error: 400
@@ -78,13 +118,11 @@ line_length:
   error: 99999 # Default is 200, so swiftlint would output an error if the file length is between 200 and 220
 file_length:
   warning: 1000
+  error: 9999
+  ignore_comment_only_lines: true
 type_name:
   min_length: 2
-  max_length: 60
 trailing_semicolon: error
-trailing_comma:
-  mandatory_comma: true
-  severity: warning
 function_body_length:
   warning: 150
   error: 300
@@ -107,6 +145,7 @@ identifier_name:
     - x
     - y
     - z
+    - w
     - i
     - j
     - k
@@ -137,13 +176,6 @@ custom_rules:
         name: "Protocol Conformance"
         message: "Protocol conformance should be declared in separate extensions in the same file"
         regex: "(class|struct|extension)[[:space:]]+(?i:(?![^d]*delegate:))[^'\"()<>{},!?:]+:([^'\"<>(){},!?:]+,)+[^'\"<>(){},!?:]*\\{"
-        match_kinds:
-          - keyword
-        severity: warning
-    computed_property:
-        name: "Computed Properties"
-        message: "The get clause should be omitted if the computed property is read only"
-        regex: "var[[:space:]]+[^:]+:[^{]*\\{[[:space:]]*get[[:space:]]*\\{[^}]+\\}(?![[:space:]]*set)"
         match_kinds:
           - keyword
         severity: warning
