@@ -117,6 +117,13 @@ identifier_name:
     - g
     - b
     - a
+    - t
+    - v
+    - y
+    - u
+    - on
+    - no
+    - qa
 return_arrow_whitespace: error
 opening_brace: error
 legacy_constructor: error
